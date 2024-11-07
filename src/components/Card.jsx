@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 export default function Card(props) {
-  const { title, color, children } = props;
+  const { title, color, actions, children } = props;
   const cardClass = cva(["card", "shadow-xl"], {
     variants: {
       color: {
@@ -24,7 +24,8 @@ export default function Card(props) {
     <div class={cardClass({ color })}>
       <div class="card-body">
         {title && <h2 class="card-title">{title}</h2>}
-        <p>{children}</p>
+        {children}
+        <div class="card-actions justify-end">{actions}</div>
       </div>
     </div>
   );

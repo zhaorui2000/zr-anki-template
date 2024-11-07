@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "class-variance-authority": "^0.7.0",
-    "preact": "^10.24.3"
+    "preact": "^10.24.3",
+    "uuid": "^11.0.2"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.9.1",

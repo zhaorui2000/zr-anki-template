@@ -14,6 +14,9 @@ importers:
       preact:
         specifier: ^10.24.3
         version: 10.24.3
+      uuid:
+        specifier: ^11.0.2
+        version: 11.0.2
     devDependencies:
       '@preact/preset-vite':
         specifier: ^2.9.1
@@ -976,6 +979,10 @@ packages:
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
+  uuid@11.0.2:
+    resolution: {integrity: sha512-14FfcOJmqdjbBPdDjFQyk/SdT4NySW4eM0zcG+HqbHP5jzuH56xO3J1DGhgs/cEMCfwYi3HQI1gnTO62iaG+tQ==}
+    hasBin: true
+
   vite-plugin-singlefile@2.0.3:
     resolution: {integrity: sha512-OEBEwdX8nCGPSdtaB1D7rryYnT+YfPTS8ojL1TDyeUF+bWDCTfRriQqw6T0vl9EbKI/KMg7szN3awst6cLrKkA==}
     engines: {node: '>18.0.0'}
@@ -1919,6 +1926,8 @@ snapshots:
       picocolors: 1.1.1
 
   util-deprecate@1.0.2: {}
+
+  uuid@11.0.2: {}
 
   vite-plugin-singlefile@2.0.3(rollup@4.24.4)(vite@5.4.10):
     dependencies:
