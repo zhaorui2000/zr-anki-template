@@ -1,6 +1,7 @@
 import { useCallback, useState } from "preact/hooks";
 import Card from "./../components/Card";
 import Radio from "./../components/Radio";
+import Tags from "./../modules/Tags";
 import { v4 as uuid } from "uuid";
 export default function App() {
   const question = "{{问题}}";
@@ -23,39 +24,41 @@ export default function App() {
       <Card title="问题" color="primary">
         {question}
       </Card>
-      <Card>
-        <Radio
-          value="A"
-          name={name}
-          bgColor={calcColor("A")}
-          checkColor={calcColor("A")}
-        >
-          {optionA}
-        </Radio>
-        <Radio
-          value="B"
-          name={name}
-          bgColor={calcColor("B")}
-          checkColor={calcColor("B")}
-        >
-          {optionB}
-        </Radio>
-        <Radio
-          value="C"
-          name={name}
-          bgColor={calcColor("C")}
-          checkColor={calcColor("C")}
-        >
-          {optionC}
-        </Radio>
-        <Radio
-          value="D"
-          name={name}
-          bgColor={calcColor("D")}
-          checkColor={calcColor("D")}
-        >
-          {optionD}
-        </Radio>
+      <Card actions={<Tags></Tags>}>
+        <div className="grid">
+          <Radio
+            value="A"
+            name={name}
+            bgColor={calcColor("A")}
+            checkColor={calcColor("A")}
+          >
+            {optionA}
+          </Radio>
+          <Radio
+            value="B"
+            name={name}
+            bgColor={calcColor("B")}
+            checkColor={calcColor("B")}
+          >
+            {optionB}
+          </Radio>
+          <Radio
+            value="C"
+            name={name}
+            bgColor={calcColor("C")}
+            checkColor={calcColor("C")}
+          >
+            {optionC}
+          </Radio>
+          <Radio
+            value="D"
+            name={name}
+            bgColor={calcColor("D")}
+            checkColor={calcColor("D")}
+          >
+            {optionD}
+          </Radio>
+        </div>
       </Card>
       <Card color="warning" title="补充">
         {extension}

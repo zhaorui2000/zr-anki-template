@@ -49,13 +49,13 @@ export default function Radio(props) {
     },
   });
   return (
-    <div class="form-control w-fit">
+    <div class={cx("form-control", "w-fit", className)}>
       <label class="label cursor-pointer">
         <input
           type="radio"
           name={name}
           disabled={disabled}
-          class={cx(radioClass({ checkColor, size, bgColor }), className)}
+          class={radioClass({ checkColor, size, bgColor })}
           {...restProps}
         />
         <span class={cx("label-text", "ml-2", textClass)}>{children}</span>

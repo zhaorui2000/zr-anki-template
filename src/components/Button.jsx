@@ -1,4 +1,4 @@
-import { cva } from "class-variance-authority";
+import { cva, cx } from "class-variance-authority";
 export default function Button(props) {
   const {
     disabled,
@@ -8,6 +8,7 @@ export default function Button(props) {
     outline,
     square,
     circle,
+    className,
     ...restProps
   } = props;
   const buttonClass = cva(["btn"], {
@@ -53,7 +54,10 @@ export default function Button(props) {
   return (
     <button
       disabled={disabled}
-      className={buttonClass({ color, size, outline, square, circle })}
+      className={cx(
+        buttonClass({ color, size, outline, square, circle }),
+        className
+      )}
       {...restProps}
     >
       {children}
