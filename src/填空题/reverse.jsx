@@ -12,7 +12,7 @@ export default function App() {
         <div>
           {questionArray.map((item, index) => {
             if (index % 2 === 0) {
-              return <span>item</span>;
+              return <span>{item}</span>;
             }
             if (Number(item.slice(1, 2)) === Number(cardOrder)) {
               return (
