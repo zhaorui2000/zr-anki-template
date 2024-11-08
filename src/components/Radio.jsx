@@ -49,7 +49,7 @@ export default function Radio(props) {
     },
   });
   return (
-    <div class={cx("form-control", "w-fit", className)}>
+    <div className={cx("form-control", "w-fit", className)}>
       <label class="label cursor-pointer">
         <input
           type="radio"
