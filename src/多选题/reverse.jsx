@@ -5,6 +5,7 @@ import CheckBox from "./../components/CheckBox";
 import { v4 as uuid } from "uuid";
 import generateUniqueRandomNumbers from "./../utils/generateUniqueRandomNumbers";
 import { cva } from "class-variance-authority";
+import Extension from "../modules/Extension";
 export default function App() {
   const question = "{{问题}}";
   const optionA = "{{A}}";
@@ -65,9 +66,7 @@ export default function App() {
           </CheckBox>
         </div>
       </Card>
-      <Card color="warning" title="补充">
-        {extension}
-      </Card>
+      <Extension></Extension>
     </div>
   );
 }
