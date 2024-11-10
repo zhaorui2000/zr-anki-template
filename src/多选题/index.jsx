@@ -63,7 +63,7 @@ export default function App() {
 
   return (
     <div className="flex flex-col gap-y-2 p-4">
-      <Card title="问题" color="primary">
+      <Card title="{{Type}}" color="primary">
         {question}
       </Card>
       <Card>

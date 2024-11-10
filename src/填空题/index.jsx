@@ -25,8 +25,7 @@ export default function App() {
   };
   return (
     <div className="grid gap-y-2 px-2">
-      {/* {{cloze:问题}} */}
-      <Card title="填空">
+      <Card title="{{Type}}">
         <div>
           {questionArray.map((item, index) => {
             if (index % 2 === 0) {
