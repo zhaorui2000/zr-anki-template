@@ -3,8 +3,6 @@ import Card from "./../components/Card";
 import Tags from "./../modules/Tags";
 import CheckBox from "./../components/CheckBox";
 import { v4 as uuid } from "uuid";
-import generateUniqueRandomNumbers from "./../utils/generateUniqueRandomNumbers";
-import { cva } from "class-variance-authority";
 import Extension from "../modules/Extension";
 export default function App() {
   const question = "{{问题}}";
@@ -12,10 +10,7 @@ export default function App() {
   const optionB = "{{B}}";
   const optionC = "{{C}}";
   const optionD = "{{D}}";
-  const extension = "{{补充}}";
   const answer = "{{答案}}".split("").map((item) => item.toUpperCase());
-
-  const randomOrder = useMemo(() => generateUniqueRandomNumbers(1, 4), []);
 
   const name = uuid();
 
