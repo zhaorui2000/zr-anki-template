@@ -47,7 +47,9 @@ export default function App() {
         </div>
       </Card>
       <Card color="warning" title="补充">
-        {extension}
+        {extension?.split("<br>").map((item) => (
+          <p>{item}</p>
+        ))}
       </Card>
     </div>
   );
