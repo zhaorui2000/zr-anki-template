@@ -5,11 +5,13 @@ import Radio from "./../components/Radio";
 import { v4 as uuid } from "uuid";
 import generateUniqueRandomNumbers from "./../utils/generateUniqueRandomNumbers";
 import { cva } from "class-variance-authority";
+import useAnkiText from "../hooks/useAnkiText";
 export default function App() {
   const [result, setResult] = useState();
   const [showAnswer, setShowAnswer] = useState(false);
 
-  const question = "{{问题}}";
+  const question = useAnkiText("{{问题}}");
+
   const optionA = "{{A}}";
   const optionB = "{{B}}";
   const optionC = "{{C}}";
