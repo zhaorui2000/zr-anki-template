@@ -1,15 +1,14 @@
 import Card from "../components/Card";
+import useAnkiText from "../hooks/useAnkiText";
 
 // 补充 卡片
 
 export default function Extension() {
-  const extension = "{{补充}}";
+  const extension = useAnkiText("{{补充}}");
 
   return (
     <Card color="warning" title="补充">
-      {extension?.split("<br>").map((item) => (
-        <p>{item}</p>
-      ))}
+      {extension}
     </Card>
   );
 }

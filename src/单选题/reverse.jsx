@@ -4,14 +4,14 @@ import Radio from "./../components/Radio";
 import Tags from "./../modules/Tags";
 import { v4 as uuid } from "uuid";
 import Extension from "../modules/Extension";
+import useAnkiText from "../hooks/useAnkiText";
 export default function App() {
-  const question = "{{问题}}";
+  const question = useAnkiText("{{问题}}");
   const optionA = "{{A}}";
   const optionB = "{{B}}";
   const optionC = "{{C}}";
   const optionD = "{{D}}";
   const answer = "{{答案}}";
-  const extension = "{{补充}}";
   const name = uuid();
 
   const calcColor = useCallback(function (value) {

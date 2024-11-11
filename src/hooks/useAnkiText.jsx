@@ -2,7 +2,7 @@ export default function useAnkiText(value) {
   let arr = value.split("<br>").filter((item) => !!item);
   let result = <></>;
   arr.map((item, index) => {
-    console.log(item);
+    let itemFormat = item.replaceAll("&lt;", "<").replaceAll("&gt;", ">");
     // 处理 br
     if (index > 0 && arr.length > 1) {
       result = (
@@ -13,9 +13,8 @@ export default function useAnkiText(value) {
       );
     }
     // 处理 标签
-    console.log(item);
-    if (/(.*?)<(.+?)>(.*?)<\/.?>/.test(item)) {
-      item.replace(/(.*?)<(.+?)>(.*?)<\/.?>(.*)/g, (_, ...args) => {
+    if (/(.*?)<(.+?)>(.*?)<\/.?>/.test(itemFormat)) {
+      itemFormat.replace(/(.*?)<(.+?)>(.*?)<\/.?>(.*)/g, (_, ...args) => {
         const [pre, tag, value, after] = args;
         switch (tag?.toUpperCase()) {
           case "I":
@@ -55,7 +54,7 @@ export default function useAnkiText(value) {
       result = (
         <>
           {result}
-          <span>{item}</span>
+          <span>{itemFormat}</span>
         </>
       );
     }
