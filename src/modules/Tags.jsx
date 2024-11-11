@@ -6,7 +6,7 @@ export default function Tags() {
   const strArr = "{{Tags}}".split(" ").filter((item) => !!item);
   return strArr.length > 0
     ? strArr.map((item) => {
-        return <Badge>{item}</Badge>;
+        return <Badge size="sm">{item}</Badge>;
       })
     : null;
 }

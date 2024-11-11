@@ -1,5 +1,8 @@
 export default function useAnkiText(value) {
-  let arr = value.split("<br>").filter((item) => !!item);
+  let arr = value
+    .trim()
+    .split("<br>")
+    .filter((item) => !!item);
   let result = <></>;
   arr.map((item, index) => {
     let itemFormat = item.replaceAll("&lt;", "<").replaceAll("&gt;", ">");

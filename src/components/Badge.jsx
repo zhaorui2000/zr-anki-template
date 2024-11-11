@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 export default function Badge(props) {
-  const { title, color, children } = props;
+  const { color, size, outline, children } = props;
   const badgeClass = cva(["badge"], {
     variants: {
       color: {
@@ -31,5 +31,5 @@ export default function Badge(props) {
       size: "xs",
     },
   });
-  return <span class={badgeClass({ color })}>{children}</span>;
+  return <span class={badgeClass({ color, size, outline })}>{children}</span>;
 }
