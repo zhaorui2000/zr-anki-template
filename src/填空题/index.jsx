@@ -7,15 +7,16 @@ export default function App() {
 
   const renderText = function (value) {
     if (value.indexOf("<br>") !== -1) {
-      let arr = value.split("<br>").filter((item) => !!item);
+      let arr = value.split("<br>");
+      console.log(arr);
       return arr.map((item, index) => {
         if (index === 0 && arr.length > 1) {
           return <span>{item}</span>;
         } else {
           return (
             <>
-              <br></br>
               <span>{item}</span>
+              <br></br>
             </>
           );
         }
