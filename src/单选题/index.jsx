@@ -57,9 +57,7 @@ export default function App() {
 
   return (
     <div className="flex flex-col gap-y-2 p-4">
-      <Card title="{{Type}}" color="primary">
-        {question}
-      </Card>
+      <Card color="primary">{question}</Card>
       <Card>
         <div className="grid">
           <Radio

@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 export default function Card(props) {
-  const { title, color, actions, children } = props;
+  const { title = "{{Type}}", color, actions, children } = props;
   const cardClass = cva(["card", "shadow-xl"], {
     variants: {
       color: {
