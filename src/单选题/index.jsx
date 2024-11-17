@@ -12,10 +12,10 @@ export default function App() {
 
   const question = useAnkiText("{{问题}}");
 
-  const optionA = "{{A}}";
-  const optionB = "{{B}}";
-  const optionC = "{{C}}";
-  const optionD = "{{D}}";
+  const optionA = useAnkiText("{{A}}");
+  const optionB = useAnkiText("{{B}}");
+  const optionC = useAnkiText("{{C}}");
+  const optionD = useAnkiText("{{D}}");
   const answer = "{{答案}}";
 
   const randomOrder = useMemo(() => generateUniqueRandomNumbers(1, 4), []);
@@ -58,7 +58,7 @@ export default function App() {
   return (
     <div className="flex flex-col gap-y-2 p-4">
       <Card color="primary">{question}</Card>
-      <Card>
+      <Card title="">
         <div className="grid">
           <Radio
             value="A"
