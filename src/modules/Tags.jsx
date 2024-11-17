@@ -1,12 +1,27 @@
-import { useEffect, useState } from "preact/hooks";
+import { useState } from "preact/hooks";
 import Badge from "../components/Badge";
+import Button from "../components/Button";
 
 // 展示anki的 Tags 内容
-export default function Tags() {
+export default function Tags(props) {
+  const { isShow: isShowProps = true } = props;
   const strArr = "{{Tags}}".split(" ").filter((item) => !!item);
-  return strArr.length > 0
-    ? strArr.map((item) => {
-        return <Badge size="sm">{item}</Badge>;
-      })
-    : null;
+  const [isShow, setIsShow] = useState(isShowProps);
+  const handleClick = function () {
+    setIsShow(true);
+  };
+  const renderTag = function () {
+    return strArr.length > 0
+      ? strArr.map((item) => {
+          return <Badge size="sm">{item}</Badge>;
+        })
+      : null;
+  };
+  return isShow ? (
+    renderTag()
+  ) : (
+    <Button outline animation={false} size="xs" onClick={handleClick}>
+      ……
+    </Button>
+  );
 }

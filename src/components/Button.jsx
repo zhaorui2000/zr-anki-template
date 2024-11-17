@@ -42,6 +42,10 @@ export default function Button(props) {
         true: ["btn-circle"],
         false: [""],
       },
+      animation: {
+        true: [""],
+        false: ["no-animation"],
+      },
     },
     defaultVariants: {
       color: "base",
@@ -49,6 +53,7 @@ export default function Button(props) {
       outline: false,
       square: false,
       circle: false,
+      animation: true,
     },
   });
   return (

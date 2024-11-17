@@ -28,7 +28,7 @@ export default function App() {
 
   return (
     <div className="grid gap-y-2 px-2">
-      <Card title="填空" actions={<Tags></Tags>}>
+      <Card actions={<Tags></Tags>}>
         <div>
           {questionArray.map((item, index) => {
             if (index % 2 === 0) {
