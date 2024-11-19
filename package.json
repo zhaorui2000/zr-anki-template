@@ -12,6 +12,8 @@
     "@nanostores/persistent": "^0.10.2",
     "@nanostores/preact": "^0.5.2",
     "class-variance-authority": "^0.7.0",
+    "dayjs": "^1.11.13",
+    "immer": "^10.1.1",
     "nanostores": "^0.11.3",
     "preact": "^10.24.3",
     "uuid": "^11.0.2"
