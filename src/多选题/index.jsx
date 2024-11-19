@@ -14,6 +14,7 @@ export default function App() {
   const optionB = "{{B}}";
   const optionC = "{{C}}";
   const optionD = "{{D}}";
+  const question = useAnkiText("{{问题}}");
   const answer = "{{答案}}".split("").map((item) => item.toUpperCase());
 
   const randomOrder = useMemo(() => generateUniqueRandomNumbers(1, 4), []);
@@ -66,7 +67,7 @@ export default function App() {
       <Card title="{{Type}}" color="primary">
         {question}
       </Card>
-      <Card>
+      <Card title="">
         <div className="grid">
           <CheckBox
             value="A"

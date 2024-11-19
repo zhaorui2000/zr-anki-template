@@ -6,6 +6,8 @@ import { v4 as uuid } from "uuid";
 import Extension from "../modules/Extension";
 import useAnkiText from "../hooks/useAnkiText";
 import BottomAlertWrap from "./../modules/BottomAlertWrap";
+import { $result } from "./store";
+import { useStore } from "@nanostores/preact";
 export default function App() {
   const question = useAnkiText("{{问题}}");
   const optionA = useAnkiText("{{A}}");
@@ -14,18 +16,22 @@ export default function App() {
   const optionD = useAnkiText("{{D}}");
   const answer = "{{答案}}";
   const name = uuid();
+  const result = useStore($result);
 
   const calcColor = useCallback(function (value) {
-    if (value === answer?.toUpperCase()) {
+    if (value === answer.toUpperCase()) {
       return "success";
+    }
+    if (value === result) {
+      return "error";
     }
   }, []);
 
   return (
     <BottomAlertWrap>
-      <Card color="primary">{question}</Card>
       <div className="flex flex-col gap-y-2 p-4">
-        <Card actions={<Tags></Tags>}>
+        <Card color="primary">{question}</Card>
+        <Card actions={<Tags></Tags>} title="">
           <div className="grid">
             <Radio
               value="A"
