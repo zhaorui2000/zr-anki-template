@@ -9,7 +9,7 @@ export default function Card(props) {
         secondary: ["bg-secondary", "text-secondary-content"],
         accent: ["bg-accent", "text-accent-content"],
         neutral: ["bg-neutral", "text-neutral-content"],
-        base: ["bg-base-300", "base-content"],
+        base: ["bg-base-300", " text-base-content"],
         info: ["bg-info", "text-info-content"],
         success: ["bg-success", "text-success-content"],
         warning: ["bg-warning", "text-warning-content"],
