@@ -5,7 +5,10 @@ export default function useAnkiText(value) {
     .filter((item) => !!item);
   let result = <></>;
   arr.map((item, index) => {
-    let itemFormat = item.replaceAll("&lt;", "<").replaceAll("&gt;", ">");
+    let itemFormat = item
+      .replaceAll("&lt;", "<")
+      .replaceAll("&gt;", ">")
+      .replaceAll("&nbsp;", " ");
     // 处理 br
     if (index > 0 && arr.length > 1) {
       result = (
