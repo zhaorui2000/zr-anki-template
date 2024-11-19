@@ -25,25 +25,27 @@ export default function App() {
     return <span>{value}</span>;
   };
   return (
-    <div className="grid gap-y-2 px-2">
-      <Card title="填空" actions={<Tags isShow={false}></Tags>}>
-        <div>
-          {questionArray.map((item, index) => {
-            if (index % 2 === 0) {
-              return renderText(item);
-            }
-            if (Number(item.slice(1, 2)) === Number(cardOrder)) {
-              return (
-                <MaskButton size="xs" color="primary" className="mx-1">
-                  {item.slice(4)}
-                </MaskButton>
-              );
-            } else {
-              return renderText(item.slice(4));
-            }
-          })}
-        </div>
-      </Card>
-    </div>
+    <>
+      <div className="grid gap-y-2 px-2">
+        <Card title="填空" actions={<Tags isShow={false}></Tags>}>
+          <div>
+            {questionArray.map((item, index) => {
+              if (index % 2 === 0) {
+                return renderText(item);
+              }
+              if (Number(item.slice(1, 2)) === Number(cardOrder)) {
+                return (
+                  <MaskButton size="xs" color="primary" className="mx-1">
+                    {item.slice(4)}
+                  </MaskButton>
+                );
+              } else {
+                return renderText(item.slice(4));
+              }
+            })}
+          </div>
+        </Card>
+      </div>
+    </>
   );
 }
