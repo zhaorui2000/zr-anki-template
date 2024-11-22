@@ -1,9 +1,16 @@
+import { useEffect } from "preact/hooks";
 import Card from "../components/Card";
 import useAnkiText from "../hooks/useAnkiText";
 import Tags from "./../modules/Tags";
+import getClozeNum from "./utils/getClozeNum";
+import { $clozeNum } from "./store";
+import { useStore } from "@nanostores/preact";
 
 export default function App() {
-  const clozeNum = `{{#c1}}1{{/c1}}{{#c2}}2{{/c2}}{{#c3}}3{{/c3}}{{#c4}}4{{/c4}}{{#c5}}5{{/c5}}{{#c6}}6{{/c6}}{{#c7}}7{{/c7}}{{#c8}}8{{/c8}}{{#c9}}9{{/c9}}{{#c10}}10{{/c10}}`;
+  useEffect(() => {
+    $clozeNum.set(getClozeNum());
+  }, []);
+  const clozeNum = useStore($clozeNum);
   const question = useAnkiText("{{问题}}", {
     clozeNum,
   });

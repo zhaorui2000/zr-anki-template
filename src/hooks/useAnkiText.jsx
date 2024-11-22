@@ -1,5 +1,5 @@
 import MaskButton from "./../modules/MaskButton";
-export default function useAnkiText(value, { clozeNum } = {}) {
+export default function useAnkiText(value, { clozeNum, initShow } = {}) {
   const processHTML = (input) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(input, "text/html");
@@ -17,7 +17,12 @@ export default function useAnkiText(value, { clozeNum } = {}) {
           if (Number(currentClozeNum) === Number(clozeNum)) {
             result.push(
               <>
-                <MaskButton size="xs" color="primary" className="mx-1">
+                <MaskButton
+                  initShow={initShow}
+                  size="xs"
+                  color="primary"
+                  className="mx-1"
+                >
                   {content}
                 </MaskButton>
                 {part}
