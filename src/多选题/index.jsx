@@ -10,10 +10,10 @@ export default function App() {
   const [result, setResult] = useState([]);
   const [showAnswer, setShowAnswer] = useState(false);
 
-  const optionA = "{{A}}";
-  const optionB = "{{B}}";
-  const optionC = "{{C}}";
-  const optionD = "{{D}}";
+  const optionA = useAnkiText("{{A}}");
+  const optionB = useAnkiText("{{B}}");
+  const optionC = useAnkiText("{{C}}");
+  const optionD = useAnkiText("{{D}}");
   const question = useAnkiText("{{问题}}");
   const answer = "{{答案}}".split("").map((item) => item.toUpperCase());
 

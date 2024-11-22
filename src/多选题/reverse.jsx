@@ -5,12 +5,13 @@ import CheckBox from "./../components/CheckBox";
 import { v4 as uuid } from "uuid";
 import Extension from "../modules/Extension";
 import BottomAlertWrap from "./../modules/BottomAlertWrap";
+import useAnkiText from "../hooks/useAnkiText";
 export default function App() {
-  const question = "{{问题}}";
-  const optionA = "{{A}}";
-  const optionB = "{{B}}";
-  const optionC = "{{C}}";
-  const optionD = "{{D}}";
+  const question = useAnkiText("{{问题}}");
+  const optionA = useAnkiText("{{A}}");
+  const optionB = useAnkiText("{{B}}");
+  const optionC = useAnkiText("{{C}}");
+  const optionD = useAnkiText("{{D}}");
   const answer = "{{答案}}".split("").map((item) => item.toUpperCase());
 
   const name = uuid();
