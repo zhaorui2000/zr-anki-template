@@ -1,3 +1,3 @@
 import { persistentAtom } from "@nanostores/persistent";
 
-export const $result = persistentAtom("result", "");
+export const $result = persistentAtom("radio-result", "");

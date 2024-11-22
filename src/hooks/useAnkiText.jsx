@@ -1,69 +1,75 @@
-export default function useAnkiText(value) {
-  let arr = value
-    .trim()
-    .split("<br>")
-    .filter((item) => !!item);
-  let result = <></>;
-  arr.map((item, index) => {
-    let itemFormat = item
-      .replaceAll("&lt;", "<")
-      .replaceAll("&gt;", ">")
-      .replaceAll("&nbsp;", " ");
-    // 处理 br
-    if (index > 0 && arr.length > 1) {
-      result = (
-        <>
-          {result}
-          <br></br>
-        </>
-      );
-    }
-    // 处理 标签
-    if (/(.*?)<(.+?)>(.*?)<\/.?>/.test(itemFormat)) {
-      itemFormat.replace(/(.*?)<(.+?)>(.*?)<\/.?>(.*)/g, (_, ...args) => {
-        const [pre, tag, value, after] = args;
-        switch (tag?.toUpperCase()) {
-          case "I":
-            result = (
+import MaskButton from "./../modules/MaskButton";
+export default function useAnkiText(value, { clozeNum } = {}) {
+  const processHTML = (input) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(input, "text/html");
+
+    const transformNode = (node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        // 动态匹配 {{cX::...}}，根据 clozeNum 控制样式
+        const regex = /\{\{c(\d+)::(.*?)\}\}/g;
+        let textArr = node.textContent.split(regex);
+        let result = [textArr[0]];
+        for (let i = 1; i < textArr.length; i = i + 3) {
+          const currentClozeNum = textArr[i];
+          const content = textArr[Number(i) + 1];
+          const part = textArr[i + 2];
+          if (Number(currentClozeNum) === Number(clozeNum)) {
+            result.push(
               <>
-                {result}
-                <span>{pre}</span>
-                <span className="italic inline">{value}</span>
-                <span>{after}</span>
+                <MaskButton size="xs" color="primary" className="mx-1">
+                  {content}
+                </MaskButton>
+                {part}
               </>
             );
-            break;
-          case "B":
-            result = (
+          } else {
+            result.push(
               <>
-                {result}
-                <span>{pre}</span>
-                <span className="font-bold inline">{value}</span>
-                <span>{after}</span>
+                {content}
+                {part}
               </>
             );
-            break;
-          case "U":
-            result = (
-              <>
-                {result}
-                <span>{pre}</span>
-                <span className="underline inline">{value}</span>
-                <span>{after}</span>
-              </>
-            );
-            break;
+          }
         }
-        return "";
-      });
-    } else {
-      result = (
-        <>
-          {result}
-          <span>{itemFormat}</span>
-        </>
-      );
-    }
-  });
-  return <div>{result}</div>;
+        return result;
+        // textArr.map((part, i, arr) => {
+        //   if (i % 3 === 0) return part; // 普通文本部分
+        //   const currentClozeNum = arr[i];
+        //   const content = arr[Number(i) + 1];
+        //   return currentClozeNum === String(clozeNum) ? (
+        //     <MaskButton>{content}</MaskButton>
+        //   ) : (
+        //     content
+        //   );
+        // });
+      }
+
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        switch (node.tagName) {
+          case "U":
+            return <span className="underline">{mapChildren(node)}</span>;
+          case "B":
+            return <span className="font-bold">{mapChildren(node)}</span>;
+          case "I":
+            return <span className="italic">{mapChildren(node)}</span>;
+          case "BR":
+            return <br />;
+          default:
+            return mapChildren(node);
+        }
+      }
+
+      return null; // 忽略其他节点
+    };
+
+    const mapChildren = (node) =>
+      Array.from(node.childNodes).map((child, i) => (
+        <>{transformNode(child)}</>
+      ));
+
+    return mapChildren(doc.body);
+  };
+
+  return <>{processHTML(value)}</>;
 }

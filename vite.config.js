@@ -5,4 +5,8 @@ import { viteSingleFile } from "vite-plugin-singlefile";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [preact(), viteSingleFile()],
+  test: {
+    globals: true,
+    environment: "jsdom",
+  },
 });
