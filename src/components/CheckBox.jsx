@@ -27,7 +27,7 @@ export default function CheckBox(props) {
         secondary: ["bg-secondary"],
         accent: ["bg-accent"],
         neutral: ["bg-neutral"],
-        base: ["base-100"],
+        base: ["bg-base-100"],
         info: ["bg-info"],
         success: ["bg-success"],
         warning: ["bg-warning"],

@@ -1,5 +1,5 @@
 import RandomTheme from "./modules/RandomTheme";
-import Content from "./单选题/index";
+import Content from "./多选题/reverse";
 
 export default function App() {
   return (

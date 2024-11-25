@@ -6,7 +6,10 @@ import { v4 as uuid } from "uuid";
 import Extension from "../modules/Extension";
 import BottomAlertWrap from "./../modules/BottomAlertWrap";
 import useAnkiText from "../hooks/useAnkiText";
+import { $result } from "./store";
+import { useStore } from "@nanostores/preact";
 export default function App() {
+  const result = useStore($result);
   const question = useAnkiText("{{问题}}");
   const optionA = useAnkiText("{{A}}");
   const optionB = useAnkiText("{{B}}");
@@ -19,6 +22,9 @@ export default function App() {
   const calcColor = useCallback(function (value) {
     if (answer.includes(value)) {
       return "success";
+    }
+    if (result.includes(value)) {
+      return "error";
     }
   }, []);
 

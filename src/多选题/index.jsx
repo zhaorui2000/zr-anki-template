@@ -1,21 +1,23 @@
-import { useCallback, useMemo, useState } from "preact/hooks";
-import Button from "../components/Button";
+import { useCallback, useEffect, useMemo, useState } from "preact/hooks";
 import Card from "./../components/Card";
 import CheckBox from "./../components/CheckBox";
 import { v4 as uuid } from "uuid";
 import generateUniqueRandomNumbers from "./../utils/generateUniqueRandomNumbers";
 import { cva } from "class-variance-authority";
 import useAnkiText from "../hooks/useAnkiText";
+import { $result } from "./store";
+import { useStore } from "@nanostores/preact";
 export default function App() {
-  const [result, setResult] = useState([]);
-  const [showAnswer, setShowAnswer] = useState(false);
-
+  const result = useStore($result);
   const optionA = useAnkiText("{{A}}");
   const optionB = useAnkiText("{{B}}");
   const optionC = useAnkiText("{{C}}");
   const optionD = useAnkiText("{{D}}");
   const question = useAnkiText("{{问题}}");
-  const answer = "{{答案}}".split("").map((item) => item.toUpperCase());
+
+  useEffect(() => {
+    $result.set("");
+  }, []);
 
   const randomOrder = useMemo(() => generateUniqueRandomNumbers(1, 4), []);
 
@@ -32,25 +34,6 @@ export default function App() {
     },
   });
 
-  const calcColor = useCallback(
-    function (value) {
-      if (!showAnswer) {
-        return "";
-      }
-      console.log(result, value);
-      if (answer.includes(value)) {
-        return "success";
-      }
-      if (result.includes(value)) {
-        return "error";
-      }
-    },
-    [showAnswer]
-  );
-
-  const handleClick = function () {
-    setShowAnswer(true);
-  };
   const handleChange = function (e) {
     let resultSet = new Set(result);
     let value = e.target.value;
@@ -59,7 +42,7 @@ export default function App() {
     } else {
       resultSet.delete(value);
     }
-    setResult([...resultSet]);
+    $result.set([...resultSet]);
   };
 
   return (
@@ -73,8 +56,6 @@ export default function App() {
             value="A"
             name={name}
             onChange={handleChange}
-            bgColor={calcColor("A")}
-            checkColor={calcColor("A")}
             className={orderClass({ order: randomOrder[0] })}
           >
             {optionA}
@@ -83,8 +64,6 @@ export default function App() {
             value="B"
             name={name}
             onChange={handleChange}
-            bgColor={calcColor("B")}
-            checkColor={calcColor("B")}
             className={orderClass({ order: randomOrder[1] })}
           >
             {optionB}
@@ -93,8 +72,6 @@ export default function App() {
             value="C"
             name={name}
             onChange={handleChange}
-            bgColor={calcColor("C")}
-            checkColor={calcColor("C")}
             className={orderClass({ order: randomOrder[2] })}
           >
             {optionC}
@@ -103,17 +80,12 @@ export default function App() {
             value="D"
             name={name}
             onChange={handleChange}
-            bgColor={calcColor("D")}
-            checkColor={calcColor("D")}
             className={orderClass({ order: randomOrder[3] })}
           >
             {optionD}
           </CheckBox>
         </div>
       </Card>
-      <Button color="primary" disabled={showAnswer} onClick={handleClick}>
-        确定
-      </Button>
     </div>
   );
 }
