@@ -31,8 +31,8 @@ export default function MaskButton(props) {
         return (
           <Button className={className} onClick={handleClick} {...restProps}>
             {children.length > PROMPT_NUM
-              ? "＿＿＿＿"
-              : "".padEnd(children.length, "?")}
+              ? "".padEnd(PROMPT_NUM, "＿")
+              : "".padEnd(PROMPT_NUM, "?")}
           </Button>
         );
       }
