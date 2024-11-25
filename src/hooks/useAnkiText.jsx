@@ -38,16 +38,6 @@ export default function useAnkiText(value, { clozeNum, initShow } = {}) {
           }
         }
         return result;
-        // textArr.map((part, i, arr) => {
-        //   if (i % 3 === 0) return part; // 普通文本部分
-        //   const currentClozeNum = arr[i];
-        //   const content = arr[Number(i) + 1];
-        //   return currentClozeNum === String(clozeNum) ? (
-        //     <MaskButton>{content}</MaskButton>
-        //   ) : (
-        //     content
-        //   );
-        // });
       }
 
       if (node.nodeType === Node.ELEMENT_NODE) {

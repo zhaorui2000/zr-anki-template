@@ -1,5 +1,7 @@
 import { cva, cx } from "class-variance-authority";
+import { loger } from "./../store/index";
 export default function Button(props) {
+  loger.debug("Button组件prpos", props);
   const {
     disabled,
     children,
