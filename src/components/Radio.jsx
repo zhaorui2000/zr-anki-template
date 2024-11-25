@@ -1,5 +1,7 @@
 import { cva, cx } from "class-variance-authority";
-export default function Radio(props) {
+import { forwardRef } from "preact/compat";
+import { useEffect } from "preact/hooks";
+const Radio = forwardRef((props, ref) => {
   const {
     name,
     disabled,
@@ -29,7 +31,7 @@ export default function Radio(props) {
         secondary: ["bg-secondary"],
         accent: ["bg-accent"],
         neutral: ["bg-neutral"],
-        base: ["base-100"],
+        base: ["bg-base-100"],
         info: ["bg-info"],
         success: ["bg-success"],
         warning: ["bg-warning"],
@@ -49,7 +51,7 @@ export default function Radio(props) {
     },
   });
   return (
-    <div className={cx("form-control", "w-fit", className)}>
+    <div ref={ref} className={cx("form-control", "w-fit", className)}>
       <label class="label cursor-pointer">
         <input
           type="radio"
@@ -62,4 +64,5 @@ export default function Radio(props) {
       </label>
     </div>
   );
-}
+});
+export default Radio;

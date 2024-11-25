@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "preact/hooks";
 import Card from "./../components/Card";
-import Radio from "./../components/Radio";
+import RadioOptions from "./../modules/RadioOptions";
 import { v4 as uuid } from "uuid";
 import generateUniqueRandomNumbers from "./../utils/generateUniqueRandomNumbers";
 import { cva } from "class-variance-authority";
@@ -12,6 +12,7 @@ export default function App() {
     $result.set("");
     // ------- 初始化 -------
   }, []);
+
   const question = useAnkiText("{{问题}}");
   const optionA = useAnkiText("{{A}}");
   const optionB = useAnkiText("{{B}}");
@@ -38,38 +39,38 @@ export default function App() {
       <Card color="primary">{question}</Card>
       <Card title="">
         <div className="grid">
-          <Radio
+          <RadioOptions
             value="A"
             name={name}
             onChange={handleChange}
             className={orderClass({ order: randomOrder[0] })}
           >
             {optionA}
-          </Radio>
-          <Radio
+          </RadioOptions>
+          <RadioOptions
             value="B"
             name={name}
             onChange={handleChange}
             className={orderClass({ order: randomOrder[1] })}
           >
             {optionB}
-          </Radio>
-          <Radio
+          </RadioOptions>
+          <RadioOptions
             value="C"
             name={name}
             onChange={handleChange}
             className={orderClass({ order: randomOrder[2] })}
           >
             {optionC}
-          </Radio>
-          <Radio
+          </RadioOptions>
+          <RadioOptions
             value="D"
             name={name}
             onChange={handleChange}
             className={orderClass({ order: randomOrder[3] })}
           >
             {optionD}
-          </Radio>
+          </RadioOptions>
         </div>
       </Card>
     </div>
