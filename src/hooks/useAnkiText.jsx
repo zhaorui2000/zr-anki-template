@@ -1,4 +1,4 @@
-import MaskButton from "./../modules/MaskButton";
+import MaskButton from "../modules/MaskAnsButton";
 export default function useAnkiText(value, { clozeNum, initShow } = {}) {
   const processHTML = (input) => {
     const parser = new DOMParser();
