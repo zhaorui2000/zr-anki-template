@@ -51,16 +51,22 @@ export default function useMouseLeaveHandler(parentRef) {
 
     // 遍历每个按钮，创建订阅
     buttons.forEach((button) => {
-      const mouseLeave$ = fromEvent(button, "mouseenter").pipe(
+      const mouseLeave$ = fromEvent(button, "mouseleave").pipe(
+        filter((e) => e.target === button) // 确保是当前按钮触发的移出事件
+      );
+      const mouseenter$ = fromEvent(button, "mouseenter").pipe(
         filter((e) => e.target === button) // 确保是当前按钮触发的移出事件
       );
 
-      const mouseLeaveSubscription = createSubscription(mouseLeave$, () => {
-        console.log(isPress);
-        if (isPress) {
-          button.click();
+      const mouseLeaveSubscription = createSubscription(
+        merge(mouseLeave$, mouseenter$),
+        () => {
+          console.log(isPress);
+          if (isPress) {
+            button.click();
+          }
         }
-      });
+      );
 
       buttonSubscriptions.push(mouseLeaveSubscription); // 保存订阅
     });

@@ -11,8 +11,8 @@ export default function App() {
     $clozeNum.set(getClozeNum());
   }, []);
   const clozeNum = useStore($clozeNum);
-  const question = useAnkiText("{{问题}}{{c1::123456}}", {
-    clozeNum: 1,
+  const question = useAnkiText("{{问题}}", {
+    clozeNum,
   });
 
   return (
