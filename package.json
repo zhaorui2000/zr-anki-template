@@ -12,24 +12,24 @@
   "dependencies": {
     "@nanostores/persistent": "^0.10.2",
     "@nanostores/preact": "^0.5.2",
-    "class-variance-authority": "^0.7.0",
+    "class-variance-authority": "^0.7.1",
     "dayjs": "^1.11.13",
     "immer": "^10.1.1",
     "nanostores": "^0.11.3",
-    "preact": "^10.24.3",
+    "preact": "^10.25.4",
     "rxjs": "^7.8.1",
-    "uuid": "^11.0.2"
+    "uuid": "^11.0.5"
   },
   "devDependencies": {
-    "@preact/preset-vite": "^2.9.1",
+    "@preact/preset-vite": "^2.9.4",
     "@testing-library/preact": "^3.2.4",
     "autoprefixer": "^10.4.20",
-    "daisyui": "^4.12.14",
-    "jsdom": "^25.0.1",
-    "postcss": "^8.4.47",
-    "tailwindcss": "^3.4.14",
-    "vite": "^5.4.10",
-    "vite-plugin-singlefile": "^2.0.3",
-    "vitest": "^2.1.5"
+    "daisyui": "^4.12.23",
+    "jsdom": "^26.0.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.0.7",
+    "vite-plugin-singlefile": "^2.1.0",
+    "vitest": "^2.1.8"
   }
 }
