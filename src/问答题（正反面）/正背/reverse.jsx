@@ -12,13 +12,15 @@ export default function App() {
   return (
     <BottomAlertWrap>
       <div className="gap-y-2 flex flex-col p-4">
-        <Card title="问题" color="primary">
+        <Card
+          title="问题"
+          color="primary"
+          actions={<Tags isShow={false}></Tags>}
+        >
           {question}
         </Card>
         <PromptCard></PromptCard>
-        <Card title="答案" actions={<Tags></Tags>}>
-          {answer}
-        </Card>
+        <Card title="答案">{answer}</Card>
         <Card title="补充" color="warning">
           {extension}
         </Card>
