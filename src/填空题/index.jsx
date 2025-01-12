@@ -17,6 +17,7 @@ export default function App() {
 
   return (
     <>
+      {/* {{cloze:问题}}  */}
       <div className="grid gap-y-2 px-2">
         <Card title="填空" actions={<Tags isShow={false}></Tags>}>
           <div>{question}</div>

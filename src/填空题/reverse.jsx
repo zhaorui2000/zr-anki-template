@@ -18,6 +18,7 @@ export default function App() {
 
   return (
     <BottomAlertWrap>
+      {/* {{cloze:问题}}  */}
       <div className="grid gap-y-2 px-2">
         <Card actions={<Tags></Tags>}>
           <div>{question}</div>
