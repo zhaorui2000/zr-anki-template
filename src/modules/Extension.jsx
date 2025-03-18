@@ -8,7 +8,7 @@ export default function Extension() {
 
   return (
     <Card color="warning" title="补充">
-      <div>{extension}</div>
+      {extension}
     </Card>
   );
 }

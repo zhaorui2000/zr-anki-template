@@ -50,11 +50,12 @@ export default function useAnkiText(value, { clozeNum, initShow } = {}) {
             return <span className="italic">{mapChildren(node)}</span>;
           case "BR":
             return <br />;
+          case "DIV":
+            return <div>{mapChildren(node)}</div>;
           default:
             return mapChildren(node);
         }
       }
-
       return null; // 忽略其他节点
     };
 
