@@ -8,6 +8,8 @@ import useAnkiText from "../hooks/useAnkiText";
 import BottomAlertWrap from "./../modules/BottomAlertWrap";
 import { $result } from "./store";
 import { useStore } from "@nanostores/preact";
+import CopyButton from "../modules/CopyButton";
+import extractReactCompText from "../utils/extractReactCompText";
 export default function App() {
   const question = useAnkiText("{{问题}}");
   const optionA = useAnkiText("{{A}}");
@@ -30,7 +32,20 @@ export default function App() {
   return (
     <BottomAlertWrap>
       <div className="flex flex-col gap-y-2 p-4">
-        <Card color="primary">{question}</Card>
+        <Card
+          color="primary"
+          actions={
+            <CopyButton
+              question={extractReactCompText(question)}
+              optionA={extractReactCompText(optionA)}
+              optionB={extractReactCompText(optionB)}
+              optionC={extractReactCompText(optionC)}
+              optionD={extractReactCompText(optionD)}
+            ></CopyButton>
+          }
+        >
+          {question}
+        </Card>
         <Card actions={<Tags></Tags>} title="">
           <div className="grid">
             <Radio

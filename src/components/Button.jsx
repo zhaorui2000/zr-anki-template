@@ -11,6 +11,7 @@ export default function Button(props) {
     square,
     circle,
     className,
+    loading,
     ...restProps
   } = props;
   const buttonClass = cva(["btn"], {
@@ -67,6 +68,7 @@ export default function Button(props) {
       )}
       {...restProps}
     >
+      {loading && <span class="loading loading-spinner"></span>}
       {children}
     </button>
   );
